@@ -1,4 +1,7 @@
 'use strict';
 import { NativeModules } from 'react-native';
 
-export default NativeModules.AmapNavigation;
+export default {
+    AmapNavigation : NativeModules.AmapNavigation,
+    AmapLocation : NativeModules.AmapLocation
+}
