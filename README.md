@@ -9,17 +9,17 @@ npm install amap-react-native --save
 # 配置
 ## android
 ```
-your react native project/android/app/build.gradle下添加
+1 your react native project/android/app/build.gradle下添加
 dependencies {
     ...
     compile project(':amap-react-native')
 }
 
-在android/settings.gradle下添加
+2 在android/settings.gradle下添加
 include ':amap-react-native'
 project(':amap-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/amap-react-native/android')
 
-在MainApplication.java下添加
+3 在MainApplication.java下添加
 import com.chf.amap.AmapReactPackage;
 ...
 protected List<ReactPackage> getPackages() {
