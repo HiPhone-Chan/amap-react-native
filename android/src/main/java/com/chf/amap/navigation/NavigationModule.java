@@ -27,11 +27,12 @@ public class NavigationModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startNavi(String from, String to, Callback callback) {
-        Activity currentActivity = getCurrentActivity();
-        Intent intent = new Intent(currentActivity, NavigationActivity.class);
+        ReactApplicationContext reactContext=  getReactApplicationContext();
+        Intent intent = new Intent(reactContext, NavigationActivity.class);
         intent.putExtra("from", from);
         intent.putExtra("to", to);
-        currentActivity.startActivity(intent);
+
+        reactContext.startActivity(intent);
 
     }
 

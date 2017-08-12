@@ -22,9 +22,15 @@ public class LocationModule extends ReactContextBaseJavaModule {
 
     private static final int PERIOD = 2000;
 
+    private static final int SUCCESS_CODE = 0;
+
     private AMapLocationClient mLocationClient;
 
     private String mLocation;
+
+    private int mLastErrorCode;
+
+    private String mLastErrorInfo;
 
     public LocationModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -35,12 +41,14 @@ public class LocationModule extends ReactContextBaseJavaModule {
         return "AmapLocation";
     }
 
-
     @ReactMethod
     public void startLocation() {
         if (mLocationClient != null) {
             return;
         }
+
+        mLastErrorCode = -1;
+        mLastErrorInfo = "Have not started.";
 
         mLocationClient = new AMapLocationClient(getCurrentActivity());
         AMapLocationClientOption locationOption = new AMapLocationClientOption();
@@ -54,12 +62,14 @@ public class LocationModule extends ReactContextBaseJavaModule {
             @Override
             public void onLocationChanged(AMapLocation aMapLocation) {
                 if (aMapLocation != null) {
-                    if (aMapLocation.getErrorCode() == 0) {
+                    mLastErrorCode = aMapLocation.getErrorCode();
+                    if (mLastErrorCode == SUCCESS_CODE) {
                         mLocation = getPosition(aMapLocation);
                     } else {
+                        mLastErrorInfo = aMapLocation.getErrorInfo();
                         Log.e("AmapError", "location Error, ErrCode:"
-                                + aMapLocation.getErrorCode() + ", errInfo:"
-                                + aMapLocation.getErrorInfo());
+                                + mLastErrorCode + ", errInfo:"
+                                + mLastErrorInfo);
                     }
                 }
             }
@@ -68,8 +78,12 @@ public class LocationModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getLocation(Callback callback) {
-        callback.invoke(mLocation);
+    public void getLocation(Callback success, Callback error) {
+        if (mLastErrorCode == SUCCESS_CODE) {
+            success.invoke(mLocation);
+        } else {
+            error.invoke(mLastErrorCode, mLastErrorInfo);
+        }
     }
 
 

@@ -55,21 +55,4 @@ public class NavigationActivity extends BaseActivity {
         mAMapNavi.startNavi(NaviType.GPS);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mAMapNaviView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mAMapNaviView.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mAMapNaviView.onDestroy();
-    }
 }

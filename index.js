@@ -2,6 +2,6 @@
 import { NativeModules } from 'react-native';
 
 export default {
-    AmapNavigation : NativeModules.AmapNavigation,
-    AmapLocation : NativeModules.AmapLocation
+    navigation : NativeModules.AmapNavigation,
+    location   : NativeModules.AmapLocation
 }

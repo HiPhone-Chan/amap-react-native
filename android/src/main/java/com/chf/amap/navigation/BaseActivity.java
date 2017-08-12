@@ -30,6 +30,9 @@ import java.util.List;
 
 public class BaseActivity extends Activity implements AMapNaviListener, AMapNaviViewListener {
 
+
+    private final static String TAG = "BaseActivity";
+
     protected AMapNaviView mAMapNaviView;
     protected AMapNavi mAMapNavi;
     protected final List<NaviLatLng> sList = new ArrayList<NaviLatLng>();
@@ -110,10 +113,10 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     @Override
     public void onCalculateRouteFailure(int errorInfo) {
         //路线计算失败
-        Log.e("dm", "--------------------------------------------");
-        Log.i("dm", "路线计算失败：错误码=" + errorInfo + ",Error Message= " + ErrorInfo.getError(errorInfo));
-        Log.i("dm", "错误码详细链接见：http://lbs.amap.com/api/android-navi-sdk/guide/tools/errorcode/");
-        Log.e("dm", "--------------------------------------------");
+        Log.e(TAG, "--------------------------------------------");
+        Log.i(TAG, "路线计算失败：错误码=" + errorInfo + ",Error Message= " + ErrorInfo.getError(errorInfo));
+        Log.i(TAG, "错误码详细链接见：http://lbs.amap.com/api/android-navi-sdk/guide/tools/errorcode/");
+        Log.e(TAG, "--------------------------------------------");
         Toast.makeText(this, "errorInfo：" + errorInfo + ",Message：" + ErrorInfo.getError(errorInfo), Toast.LENGTH_LONG).show();
     }
 
@@ -230,19 +233,19 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     public void notifyParallelRoad(int i) {
         if (i == 0) {
             Toast.makeText(this, "当前在主辅路过渡", Toast.LENGTH_SHORT).show();
-            Log.d("wlx", "当前在主辅路过渡");
+            Log.d(TAG, "当前在主辅路过渡");
             return;
         }
         if (i == 1) {
             Toast.makeText(this, "当前在主路", Toast.LENGTH_SHORT).show();
 
-            Log.d("wlx", "当前在主路");
+            Log.d(TAG, "当前在主路");
             return;
         }
         if (i == 2) {
             Toast.makeText(this, "当前在辅路", Toast.LENGTH_SHORT).show();
 
-            Log.d("wlx", "当前在辅路");
+            Log.d(TAG, "当前在辅路");
         }
     }
 
@@ -275,8 +278,8 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
 
     @Override
     public void onNaviViewLoaded() {
-        Log.d("wlx", "导航页面加载成功");
-        Log.d("wlx", "请不要使用AMapNaviView.getMap().setOnMapLoadedListener();会overwrite导航SDK内部画线逻辑");
+        Log.d(TAG, "导航页面加载成功");
+        Log.d(TAG, "请不要使用AMapNaviView.getMap().setOnMapLoadedListener();会overwrite导航SDK内部画线逻辑");
     }
 
     @Override
