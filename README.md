@@ -29,4 +29,45 @@ protected List<ReactPackage> getPackages() {
   );
 }
 
+4 在AndroidManifest.xml中
+<!-- 配置activity -->
+<activity android:name="com.amap.api.navi.AmapRouteActivity"
+              android:theme="@android:style/Theme.NoTitleBar"
+              android:configChanges="orientation|keyboardHidden|screenSize" />
+
+<!-- 增加所需权限 -->
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+<user-permission android:name="android.permission.WAKE_LOCK" />
+```
+
+## ios
+```
+暂未实现
+```
+
+# Usage
+
+## location
+```
+import Amap from 'amap-react-native';
+Amap.startLocation(); // 启动时调一次
+Amap.getLocation();   // 中途需要获取的时候调用
+Amap.stopLocation();  // 结束时调一次
+```
+
+## navigation
+```
+Amap.navigation.startNavi({
+    "name" : "地图上显示的名字",
+    "coordinate" : "经纬度坐标"  // 格式 long,lat
+  }, function(e){ // 错误返回
+            console.log(e);
+  });
 ```
