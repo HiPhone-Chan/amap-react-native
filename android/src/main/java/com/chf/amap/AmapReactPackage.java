@@ -1,7 +1,6 @@
 package com.chf.amap;
 
 import com.chf.amap.location.LocationModule;
-import com.chf.amap.navigation.NavigationMapView;
 import com.chf.amap.navigation.NavigationModule;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -32,6 +31,6 @@ public class AmapReactPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Arrays.<ViewManager>asList(new NavigationMapView());
+        return Collections.emptyList();
     }
 }

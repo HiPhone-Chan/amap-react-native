@@ -57,9 +57,14 @@ protected List<ReactPackage> getPackages() {
 ## location
 ```
 import Amap from 'amap-react-native';
-Amap.startLocation(); // 启动时调一次
-Amap.getLocation();   // 中途需要获取的时候调用
-Amap.stopLocation();  // 结束时调一次
+Amap.location.startLocation(); // 启动时调一次
+// 中途需要获取的时候调用
+Amap.location.getLocation(function(location){ // 成功回调函数
+              console.log(location); // 格式 long,lat
+          }, function(e) { // 失败回调函数
+              console.log(e);
+          });   
+Amap.location.stopLocation();  // 结束时调一次
 ```
 
 ## navigation
