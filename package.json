@@ -1,6 +1,6 @@
 {
   "name": "amap-react-native",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "高德sdk封装",
   "main": "index.js",
   "scripts": {
