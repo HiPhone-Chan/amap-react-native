@@ -61,8 +61,10 @@ Amap.location.startLocation(); // 启动时调一次
 // 中途需要获取的时候调用
 Amap.location.getLocation(function(location){ // 成功回调函数
               console.log(location); // 格式 long,lat
-          }, function(e) { // 失败回调函数
-              console.log(e);
+          }, function(code, info, lastLocation) { // 失败回调函数
+              console.log(code); // 失败代码
+              console.log(info); // 失败信息
+              console.log(lastLocation); // 最近一次获取的位置
           });   
 Amap.location.stopLocation();  // 结束时调一次
 ```
@@ -73,6 +75,6 @@ Amap.navigation.startNavi({
     "name" : "地图上显示的名字",
     "coordinate" : "经纬度坐标"  // 格式 long,lat
   }, function(e){ // 错误返回
-            console.log(e);
+    console.log(e);
   });
 ```

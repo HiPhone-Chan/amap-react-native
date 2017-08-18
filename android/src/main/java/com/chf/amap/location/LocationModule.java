@@ -82,7 +82,7 @@ public class LocationModule extends ReactContextBaseJavaModule {
         if (mLastErrorCode == SUCCESS_CODE) {
             success.invoke(mLocation);
         } else {
-            error.invoke(mLastErrorCode, mLastErrorInfo);
+            error.invoke(mLastErrorCode, mLastErrorInfo, mLocation);
         }
     }
 
