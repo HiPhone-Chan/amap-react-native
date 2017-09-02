@@ -28,9 +28,9 @@ public class LocationModule extends ReactContextBaseJavaModule {
 
     private String mLocation;
 
-    private int mLastErrorCode;
+    private int mLastErrorCode = -1;
 
-    private String mLastErrorInfo;
+    private String mLastErrorInfo = "Have not started.";
 
     public LocationModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -47,8 +47,7 @@ public class LocationModule extends ReactContextBaseJavaModule {
             return;
         }
 
-        mLastErrorCode = -1;
-        mLastErrorInfo = "Have not started.";
+        mLastErrorInfo = "No value.";
 
         mLocationClient = new AMapLocationClient(getCurrentActivity());
         AMapLocationClientOption locationOption = new AMapLocationClientOption();

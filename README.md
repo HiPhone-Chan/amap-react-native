@@ -12,6 +12,11 @@ npm install amap-react-native --save
 1 your react native project/android/app/build.gradle下添加
 dependencies {
     ...
+    # 根据需要添加以下依赖
+    compile 'com.amap.api:map2d:latest.integration' # 导航相关
+    compile 'com.amap.api:navi-3dmap:latest.integration' # 导航相关
+    compile 'com.amap.api:location:latest.integration' # 定位相关
+    # 必要
     compile project(':amap-react-native')
 }
 
@@ -20,12 +25,12 @@ include ':amap-react-native'
 project(':amap-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/amap-react-native/android')
 
 3 在MainApplication.java下添加
-import com.chf.amap.AmapReactPackage;
+import com.chf.amap.AmapReactPackage; // add this
 ...
 protected List<ReactPackage> getPackages() {
   return Arrays.<ReactPackage>asList(
       new MainReactPackage(), ...
-      new AmapReactPackage()
+      new AmapReactPackage() // add this
   );
 }
 

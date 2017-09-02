@@ -12,10 +12,11 @@
   },
   "keywords": [
     "amap",
+    "gaode",
     "react-native"
   ],
   "author": "hiphone",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/HiPhone-Chan/amap-react-native/issues"
   },
